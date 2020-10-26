@@ -77,7 +77,7 @@ cv2.rectangle(img, (200, 200),(300, 300), (255, 0, 255), 5)
 cv2.circle(img, (251, 253), 30, (255, 255, 0), 5)
 
 #Put text
-cv2.putText(img, "OPEN HERE", (151,150), cv2.FONT_HERSHEY_COMPLEX,1, (0,150,150), 1)"""
+cv2.putText(img, "OPEN HERE", (151,150), cv2.FONT_HERSHEY_COMPLEX,1, (0,150,150), 1)
 
 #######--------------------------------WARP PERSPECTIVE-----------------------############
 #defining width and height
@@ -87,6 +87,12 @@ pt2 = np.float32([[0, 0], [width, 0], [0, height], [width, height]])
 matrix = cv2.getPerspectiveTransform(pt1, pt2)
 imgOutput = cv2.warpPerspective(img, matrix, (width, height))
 
-cv2.imshow("Warp perspective", imgOutput)
+cv2.imshow("Warp perspective", imgOutput)"""
+
+###############------------------STACKING THE IMAGES--------------------------------#############
+imgH = np.hstack((img, img))
+imgV = np.vstack((img, img))
+cv2.imshow("Stack", imgH)
+cv2.imshow("Stack", imgV)
 #Wait indefinitely
 cv2.waitKey(0)
