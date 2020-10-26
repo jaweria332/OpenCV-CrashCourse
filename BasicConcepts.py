@@ -59,7 +59,7 @@ cv2.imshow("Edged", imgEdge)
 cv2.imshow("Eroded", imgEroder)
 cv2.imshow("Resized", imgResize)
 cv2.imshow("Cropped", imgCropped)
-"""
+
 
 #-------------------------------------------------SHAPES--------------------------------------------------------#
 img = np.zeros((512, 512, 3), np.uint8)
@@ -77,7 +77,16 @@ cv2.rectangle(img, (200, 200),(300, 300), (255, 0, 255), 5)
 cv2.circle(img, (251, 253), 30, (255, 255, 0), 5)
 
 #Put text
-cv2.putText(img, "OPEN HERE", (151,150), cv2.FONT_HERSHEY_COMPLEX,1, (0,150,150), 1)
-cv2.imshow("Image",img)
+cv2.putText(img, "OPEN HERE", (151,150), cv2.FONT_HERSHEY_COMPLEX,1, (0,150,150), 1)"""
+
+#######--------------------------------WARP PERSPECTIVE-----------------------############
+#defining width and height
+width, height=300, 300
+pt1 = np.float32([[111, 219], [287, 188], [154, 482], [354, 440]])
+pt2 = np.float32([[0, 0], [width, 0], [0, height], [width, height]])
+matrix = cv2.getPerspectiveTransform(pt1, pt2)
+imgOutput = cv2.warpPerspective(img, matrix, (width, height))
+
+cv2.imshow("Warp perspective", imgOutput)
 #Wait indefinitely
 cv2.waitKey(0)
