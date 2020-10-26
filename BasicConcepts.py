@@ -1,7 +1,7 @@
 #Importing libraries
 import cv2
 import numpy as np
-
+"""
 #-----------------------------------IMAGE READING---------------------------------------#
 #Reading images
 img = cv2.imread('lena.jpg')
@@ -13,7 +13,7 @@ img = cv2.imread('lena.jpg')
 #cv2.waitKey(0)
 
 #-----------------------------------VIDEO READING---------------------------------------#
-"""
+
 #Reading video
 cap = cv2.VideoCapture("sample.mp4")
 
@@ -87,7 +87,7 @@ pt2 = np.float32([[0, 0], [width, 0], [0, height], [width, height]])
 matrix = cv2.getPerspectiveTransform(pt1, pt2)
 imgOutput = cv2.warpPerspective(img, matrix, (width, height))
 
-cv2.imshow("Warp perspective", imgOutput)"""
+cv2.imshow("Warp perspective", imgOutput)
 
 ###############------------------STACKING THE IMAGES--------------------------------#############
 imgH = np.hstack((img, img))
@@ -95,4 +95,8 @@ imgV = np.vstack((img, img))
 cv2.imshow("Stack", imgH)
 cv2.imshow("Stack", imgV)
 #Wait indefinitely
-cv2.waitKey(0)
+cv2.waitKey(0)"""
+
+
+##############----------------------COLOR DETECTION----------------------------################
+
