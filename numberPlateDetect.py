@@ -10,6 +10,8 @@ cap.set(10, 150)
 platecascade = cv2.CascadeClassifier("E:\\CVDL\\OPENCV_CRASH\\OpenCV-CrashCourse\\haarcascade_russian_plate_number.xml")
 minArea = 500
 color =0,0,255
+count = 0
+
 
 while True:
     success, img = cap.read()
@@ -27,4 +29,9 @@ while True:
             cv2.imshow("ROI", imgROI)
     cv2.imshow("Result", img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+        cv2.imwrite("E:\\CVDL\\OPENCV_CRASH\\OpenCV-CrashCourse\\No_plate" + str(count) + ".jpg", imgROI)
+        cv2.rectangle(img, (0,200),(640,300), (0,0,255), cv2.FILLED)
+        cv2.putText(img, "Scan Saved", (150, 265), cv2.FONT_HERSHEY_COMPLEX, 2, (0,255,0), 2)
+        cv2.imshow("Result", img)
+        cv2.waitKey(500)
+        count +=1
