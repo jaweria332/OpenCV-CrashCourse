@@ -106,10 +106,10 @@ def empty(a):
 cv2.namedWindow("Trackbar")
 cv2.resizeWindow("Trackbar", 640, 240)
 cv2.createTrackbar("Hue Min", "Trackbar", 0, 179, empty)
-cv2.createTrackbar("Hue Max", "Trackbar", 179, 179, empty)
-cv2.createTrackbar("Sat Min", "Trackbar", 0, 255, empty)
-cv2.createTrackbar("Sat Max", "Trackbar", 255, 255, empty)
-cv2.createTrackbar("Val Min", "Trackbar", 0, 255, empty)
+cv2.createTrackbar("Hue Max", "Trackbar", 12, 179, empty)
+cv2.createTrackbar("Sat Min", "Trackbar", 45, 255, empty)
+cv2.createTrackbar("Sat Max", "Trackbar", 253, 255, empty)
+cv2.createTrackbar("Val Min", "Trackbar", 84, 255, empty)
 cv2.createTrackbar("Val Max", "Trackbar", 255, 255, empty)
 
 path = "car.jpg"
@@ -127,8 +127,14 @@ while True:
     print(h_min, h_max,s_min,s_max,v_min,v_max)
     lower = np.array([h_min, s_min,v_min])
     upper = np.array([h_max, s_max, v_max])
+    #Mask give us filtered out imae of that color
     mask = cv2.inRange(imgHSV, lower, upper)
+
+    #Compare bitwise both images and return boolean value ie true or false
     imgRes = cv2.bitwise_and(img, img, mask=mask)
+
     cv2.imshow("Original", img)
     cv2.imshow("HSV", imgHSV)
+    cv2.imshow("Mask", mask)
+    cv2.imshow("Result", imgRes)
     cv2.waitKey(1)
