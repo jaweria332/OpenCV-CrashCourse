@@ -39,7 +39,6 @@ def getContour(img):
     contours, hier = cv2.findContours(img, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_NONE)
     for cnt in contours:
         area = cv2.contourArea(cnt)
-        print(area)
         if area>500:
             cv2.drawContours(imgcopy, cnt, -1, (255, 0,0), 3)
             peri = cv2.arcLength(cnt,True)
@@ -47,6 +46,8 @@ def getContour(img):
             print(len(approx))
             objCor = len(approx)
             x, y, w, h = cv2.boundingRect(approx)
+
+
             if objCor == 3:
                 objectType = "Triangle"
             elif objCor == 4:
