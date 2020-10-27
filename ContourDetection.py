@@ -47,9 +47,20 @@ def getContour(img):
             print(len(approx))
             objCor = len(approx)
             x, y, w, h = cv2.boundingRect(approx)
-
-            cv2.rectangle(imgcopy, (x,y), (x+w, y+h), (255,0,0), 2)
-            
+            if objCor == 3:
+                objectType = "Triangle"
+            elif objCor == 4:
+                rat=w/float(h)
+                if rat>0.95 and rat < 1.05:
+                    objectType="Sqauare"
+                else:
+                    objectType="Rectangle"
+            elif objCor>4:
+                objectType="Circle"
+            else:
+                objectType="None"
+            cv2.rectangle(imgcopy, (x,y), (x+w, y+h), (0,0,0), 4)
+            cv2.putText(imgcopy, objectType, (x +(w//2)-10, y+(h//2)-10), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,0,255), 2)
 
 path = 'shapes.jpg'
 img = cv2.imread(path)
