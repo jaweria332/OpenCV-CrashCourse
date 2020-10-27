@@ -101,6 +101,7 @@ cv2.waitKey(0)"""
 ##############----------------------COLOR DETECTION----------------------------################
 def empty(a):
     pass
+
 #Defining Trackbar
 cv2.namedWindow("Trackbar")
 cv2.resizeWindow("Trackbar", 640, 240)
