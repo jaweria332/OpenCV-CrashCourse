@@ -1,20 +1,22 @@
 import cv2
 import numpy as np
+
+
 frameWidth = 640
 frameHeight = 480
 cap = cv2.VideoCapture(1)
 cap.set(3, frameWidth)
 cap.set(4, frameHeight)
-cap.set(10,150)
+cap.set(10, 150)
 
-myColors = [[5,107,0,19,255,255],
-            [133,56,0,159,156,255],
-            [57,76,0,100,255,255],
-            [90,48,0,118,255,255]]
-myColorValues = [[51,153,255],
-                 [255,0,255],
-                 [0,255,0],
-                 [255,0,0]]
+myColors = [[5, 107, 0, 19, 255, 255],
+            [133, 56, 0, 159, 156, 255],
+            [57, 76, 0, 100, 255, 255],
+            [90, 48, 0, 118, 255, 255]]
+myColorValues = [[51, 153, 255],
+                 [255, 0, 255],
+                 [0, 255, 0],
+                 [255, 0, 0]]
 
 myPoints =  []
 
@@ -29,7 +31,7 @@ def findColor(img,myColors,myColorValues):
         mask = cv2.inRange(imgHSV,lower,upper)
         x,y=getContours(mask)
         cv2.circle(imgResult,(x,y),15,myColorValues[count],cv2.FILLED)
-        if x!=0 and y!=0:
+        if x != 0 and y != 0:
             newPoints.append([x,y,count])
         count +=1
         #cv2.imshow(str(color[0]),mask)
