@@ -1,12 +1,11 @@
 import cv2
 import numpy as np
-
 frameWidth = 640
 frameHeight = 480
-cap = cv2.VideoCapture(0)
-cap.set(3,frameWidth)
+cap = cv2.VideoCapture(1)
+cap.set(3, frameWidth)
 cap.set(4, frameHeight)
-cap.set(10, 150)
+cap.set(10,150)
 
 mycolor = [[0, 128, 188,255,0,255]]
 mycolorval = [[51, 153, 255]]
