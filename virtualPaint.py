@@ -11,7 +11,7 @@ myColors = [[5,107,0,19,255,255],
             [133,56,0,159,156,255],
             [57,76,0,100,255,255],
             [90,48,0,118,255,255]]
-myColorValues = [[51,153,255],         
+myColorValues = [[51,153,255],
                  [255,0,255],
                  [0,255,0],
                  [255,0,0]]
@@ -19,16 +19,23 @@ myColorValues = [[51,153,255],
 myPoints =  []
 
 
-def findColor(img, mycolor, mycolorval):
-    img = cv2.resize(img, (400, 300))
+def findColor(img,myColors,myColorValues):
     imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    lower = np.array(mycolor[0][0:3])
-    upper = np.array(mycolor[0][3:6])
-    # Mask give us filtered out image of that color
-    mask = cv2.inRange(imgHSV, lower, upper)
-    x, y = getContour(mask)
-    cv2.circle(imgResult, (x,y), 10, mycolorval, cv2.FILLED)
-    #cv2.imshow(str(mycolor), mask)
+    count = 0
+    newPoints=[]
+    for color in myColors:
+        lower = np.array(color[0:3])
+        upper = np.array(color[3:6])
+        mask = cv2.inRange(imgHSV,lower,upper)
+        x,y=getContours(mask)
+        cv2.circle(imgResult,(x,y),15,myColorValues[count],cv2.FILLED)
+        if x!=0 and y!=0:
+            newPoints.append([x,y,count])
+        count +=1
+        #cv2.imshow(str(color[0]),mask)
+    return newPoints
+
+
 
 def getContour(img):
     contour, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
