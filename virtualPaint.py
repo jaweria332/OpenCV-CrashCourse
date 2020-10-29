@@ -51,7 +51,11 @@ def getContours(img):
 
 
 
-def drawCanvas(mypoints, myclrval, )
+def drawOnCanvas(myPoints,myColorValues):
+    for point in myPoints:
+        cv2.circle(imgResult, (point[0], point[1]), 10, myColorValues[point[2]], cv2.FILLED)
+
+
 while True:
     success, img = cap.read()
     imgResult = img.copy()
