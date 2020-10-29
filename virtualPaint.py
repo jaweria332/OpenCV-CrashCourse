@@ -7,10 +7,17 @@ cap.set(3, frameWidth)
 cap.set(4, frameHeight)
 cap.set(10,150)
 
-mycolor = [[0, 128, 188,255,0,255]]
-mycolorval = [[51, 153, 255]]
+myColors = [[5,107,0,19,255,255],
+            [133,56,0,159,156,255],
+            [57,76,0,100,255,255],
+            [90,48,0,118,255,255]]
+myColorValues = [[51,153,255],         
+                 [255,0,255],
+                 [0,255,0],
+                 [255,0,0]]
 
-mypoints = [x, y]
+myPoints =  []
+
 
 def findColor(img, mycolor, mycolorval):
     img = cv2.resize(img, (400, 300))
