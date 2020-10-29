@@ -20,7 +20,7 @@ cv2.createTrackbar("Sat Min", "Trackbar", 0, 255, empty)
 cv2.createTrackbar("Sat Max", "Trackbar", 255, 255, empty)
 cv2.createTrackbar("Val Min", "Trackbar", 0, 255, empty)
 cv2.createTrackbar("Val Max", "Trackbar", 255, 255, empty)
-)
+
 
 while True:
     _, img = cap.read()
@@ -41,7 +41,7 @@ while True:
     #Compare bitwise both images and return boolean value ie true or false
 
 
-    #cv2.imshow("Original", img)
-    #cv2.imshow("HSV", imgHSV)
-    #cv2.imshow("Mask", mask)
+    cv2.imshow("Original", img)
+    cv2.imshow("HSV", imgHSV)
+    cv2.imshow("Mask", mask)
     cv2.waitKey(1)
