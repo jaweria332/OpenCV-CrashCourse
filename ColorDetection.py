@@ -4,6 +4,7 @@ def empty(a):
     pass
 
 
+
 #Function to stack images
 def stackImages(scale,imgArray):
     rows = len(imgArray)
