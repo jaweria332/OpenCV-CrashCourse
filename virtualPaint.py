@@ -59,7 +59,14 @@ def drawOnCanvas(myPoints,myColorValues):
 while True:
     success, img = cap.read()
     imgResult = img.copy()
-    findColor(img, mycolor, mycolorval)
+    newPoints = findColor(img, myColors,myColorValues)
+    if len(newPoints)!=0:
+        for newP in newPoints:
+            myPoints.append(newP)
+    if len(myPoints)!=0:
+        drawOnCanvas(myPoints,myColorValues)
+
+
     cv2.imshow("Result", imgResult)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
