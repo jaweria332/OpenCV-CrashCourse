@@ -7,10 +7,10 @@ import numpy as np
 img = cv2.imread('lena.jpg')
 
 #Displaying image
-#cv2.imshow("Lena", img)
+cv2.imshow("Lena", img)
 
 #Wait indefinitely
-#cv2.waitKey(0)
+cv2.waitKey(0)
 
 #-----------------------------------VIDEO READING---------------------------------------#
 
